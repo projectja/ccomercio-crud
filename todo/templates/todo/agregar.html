@@ -1,0 +1,23 @@
+{% extends 'todo/layout.html' %}
+
+{% block content %}
+
+<div class="container">
+
+<form class="row g-3" method="post">
+    {% csrf_token %}
+    {{ form }}
+  <div class="col-auto">
+    <label for="staticEmail2" class="visually-hidden">Tarea</label>
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" >
+  </div>
+
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary">Agregar</button>
+  </div>
+</form>
+
+</div>
+
+
+{% endblock %}
