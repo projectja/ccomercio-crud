@@ -1,0 +1,32 @@
+{% extends 'todo/layout.html' %}
+
+
+{% block content %}
+
+<form id="checked-contacts">
+    <table>
+      <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr class="">
+          <td><input type='checkbox' name='ids' value='0'></td>
+          <td>Joe Smith</td>
+          <td>joe@smith.org</td>
+          <td>Active</td>
+        </tr>
+
+      </tbody>
+    </table>
+</form>
+
+
+{% endblock %}
+
+
+

@@ -3,29 +3,49 @@
 {% block content %}
 
 <h1>Lista de Tareas</h1>
-<table class="table">
+
+<div hx-target="#tbody">
+    <a class="btn"  hx-put="{% url 'generardoc'  %}"  >activate  </a>
+    <a class="btn" hx-put="/deactivate">Deactivate</a>
+</div>
+
+<form id = "ProjectsForm" method="post">
+
+<table>
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Tarea</th>
-      <th scope="col">Acción</th>>
+      <th scope="col">Compañia</th>
+      <th scope="col">Descripción</th>>
+      <th scope="col">Proyecto</th>>
+      <tn scope="col">Acción</tn>
     </tr>
   </thead>
-  <tbody>
-  {% for tarea in tareas %}
-    <tr>
-      <th scope="row">{{ tarea.id }}</th>
-      <td>{{ tarea }}</td>
-      <td>
-      <a class="btn btn-primary btn-sm" href="{% url 'eliminar' tarea.id %}">eliminar</a>
-       <a class="btn btn-danger btn-sm" href="{% url 'editar' tarea.id %}">editar</a>
-      </td>
+  <tbody id ="tbody">
+  {% for project in projects %}
+        <tr class="">
+            <td
+               hx-put={% url "generardoc" %}
+               hx-trigger="click"
+               hx-target="#table"
+               hx-push-url="true"
+               hx-swap="innerHTML"><input type='checkbox' name='ids' value=project.generated_deca></td>
+            <th scope="row">{{ project.id }}</th>
+            <td>{{ project.company }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.program }}</td>
+            <td>{{ project.generated_deca }}</td>
+
+            <td>
+                <a class="btn btn-primary btn-sm" href="{% url 'eliminar' project.id %}">eliminar</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'editar' project.id %}">editar</a>
+            </td>
     </tr>
-  {% endfor %}
-  </tbody>
+    {% endfor %}
+    </tbody>
 </table>
 
+</form>
 
 
-
-{% endblock %}
+{% endblock content %}
